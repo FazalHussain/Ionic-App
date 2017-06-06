@@ -1,0 +1,80 @@
+<ion-view view-title="" hide-back-button="true" hide-bar>
+    <ion-content scroll="false" class="splash">
+        <div class="scroll-container">
+            <ion-scroll direction="y" class= "container-term">
+                <div class="field-scroll">
+            <div id="splash-logo"></div>
+            
+            <!-- CONTAINER 1 / ACTION 1 -->
+
+            <div id="container-1"> <h2>KBHH Yard Master</h2><h1> PROTECTING YOUR YARD AGAINST DISEASE</h1> </div>
+            <div id="action-tap-1" ng-click="showAuthenticationForm()"></div>
+            <!-- FIRST AUTHENTICATION FORM -->
+            <div id="container-2" class="hide">
+                <h2>YOUR AUTHENTICATION</h2>
+                <div class="input-field" id="authform">
+<!--
+                    <div class="scroll-container">
+                    <ion-scroll direction="y" class= "container-term">
+                        <div class="field-scroll">
+-->
+                        <form id="firstauth">
+                            <input class="field" type="text" ng-model="auth.vcode" placeholder="PRACTICE CODE">
+                            <input class="field" type="text" ng-model="auth.unlockkey" placeholder="UNLOCK KEY">
+
+                        </form>
+                        <div>
+                            <button class="btn submit" ng-click="authRespons = checkAuth(auth)"> SUBMIT </button>
+                        </div>
+<!--
+                        </div>
+                    </ion-scroll>
+                    </div>
+-->
+                </div>
+                <div id="setuserform" class="input-field hide">
+<!--
+                    <div class="scroll-container">
+                    <ion-scroll direction="y" class= "container-term">
+                        <div class="field-scroll">
+-->
+                            <form id="setuser">
+                                {{data}}
+                                <input class="field" type="text" ng-model="user.prime" placeholder="PRIMARY VET USER (PARTNER) EMAIL">
+                                <input class="field" type="text" ng-model="user.associate" placeholder="ASSOCIATED MEMBER(s) EMAIL(s) - COMMA SEPARATED">
+
+                            </form>
+                            <div>
+                                <button class="btn submit" ng-click="checkUser(user)"> SUBMIT </button>
+                            </div>
+<!--
+                        </div>
+                    </ion-scroll>
+                    </div>
+-->
+                </div>
+
+            </div>
+            <div id="container-3" class="hide">
+                <h2>Professor Josh Slater</h2>
+                <div class="content">
+                    <img src="img/js-small.jpg" />
+<!--
+                    <p>MSD Animal Health would like to thank Professor Josh Slater PhD, Dip ECEIM, BVM&S for his guidance regarding the content and methodology included in KBHH Yard Master.
+                        Professor Josh Slater worked in equine practice before completing a residency in equine medicine, a PhD in equine infectious diseases and becoming a lecturer, then senior lecturer in equine medicine at Cambridge Veterinary School. He is currently professor of equine clinical studies at the Royal Veterinary College. His main clinical and research interests are in equine infectious diseases. He is a past president of BEVA, ECEIM and FEEVA. He was biosecurity advisor for the 2008 Equestrian Olympic Games, the London 2012 Equestrian Olympic Games and the World Equestrian Games 2014 in Normandy.</p>
+-->
+                    <p>MSD Animal Health would like to thank Professor Josh Slater PhD, Dip ECEIM, BVM&amp;S for his guidance regarding the content and methodology included in KBHH Yard Master.</p>
+                    <p>
+                        He is professor of equine clinical studies at the Royal Veterinary College where his main clinical and research interests are in equine infectious disease. 
+                    </p>
+                </div>
+            </div>
+            <div id="action-tap-2" ng-click="goTo('app.details')" class="hide"></div>
+
+            <div class="msd-logo"></div>
+<!--            donedoned-->
+                </div>
+           </ion-scroll>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,195 @@
+<ion-view view-title="" class="light-bg" cache-view="false">
+    <ion-content scroll="false" id="content-{{id}}" >
+        <div ng-bind-html="html"></div>
+        <div  class="tops">
+            <!--<button class="icon-btn summary info-summary" ng-click="goToPage('app.survey')"></button>-->
+            <div class="chapter-area hide" id="chapter-area-{{id}}">
+<!--                <button class="icon-btn info info-iconning"></button>-->
+                <div class="slide-header category-{{id}}">
+                    <h1><span class="icon"></span><span class="cat-info">{{category}}</span></h1>
+                </div>
+            </div>
+        </div>
+        <div class="fullscreen category-{{id}}">
+            <div class="prev-pos" id="previouse-{{id}}">
+                <button class="icon-btn prev" nav-direction="back" ng-click="goPrev()"></button>
+                <span>previous section</span>
+            </div>
+            <div class="next-pos hide" id="next-{{id}}">
+                <span>next section</span>
+                <button class="icon-btn next" nav-direction="forward" ng-click="goNext()"></button>
+            </div>
+            <div class="next-pos hide" id="save-{{id}}">
+                <span> Submit </span><button class="icon-btn next" nav-direction="forward" ng-click="save()"></button>
+            </div>
+            <div class="page-title category-{{id}}" id="page-title-{{id}}">
+                <h1><span class="icon"></span><span class="cat-info">{{category}}</span></h1>
+            </div>
+            <div  class="section-info">
+                <p class="hide" id="next-section-info">Section complete <br/>    – tap the link below to continue</p>
+                <p id="swipe-info"><span></span></p>
+            </div>
+            <div class="page-title category-{{id}} hide" id="end">
+                <h1><span class="cat-info">Thank you!</span></h1>
+            </div>
+        </div><!-- END Background information-->
+
+        <form id="form-{{id}}" validate>
+            <div id="slide-container-{{id}}">
+            <ion-slide-box show-pager="false" slide-interval = 10 active-slide="SurveySlide" on-slide-changed="slideHasChanged($index)">
+                <ion-slide><div class="fullslide"> </div></ion-slide><!-- EMPTY SLIDE -->
+                <ion-slide ng-repeat = "question in questions" >
+                    <div id="hidei-{{question.id}}" class='hidei-poz hide'></div>
+                    <button id="infobth-{{question.id}}" class="icon-btn-small info-pos info" on-touch = "showInfo(question.id)"></button> <!-- Info button -->
+                    <div id="hidea-{{question.id}}" class='hidea-poz hide'></div>
+                    <button id="aditionals-{{question.id}}" class="icon-btn-small aditionals-pos adv" on-touch = "showAditionals(question.id)"></button> <!-- Aditionals button -->
+                    <div id="hideni-{{question.id}}" class='hideni-poz hide'></div>
+                    <button id="newinputbtn-{{question.id}}" class="icon-btn-small input-pos input" on-touch = "openInputBlock(question.id)" ng-class ="togglesbtninput ? '':'show'"></button> <!-- New input button -->
+                    <div class="box ">
+                        <div class="counter"><p><em>Question: {{question.id}} / 39</em></p></div>
+                        <div class="header"><h3>{{question.question}}</h3></div><!-- Title -->
+                        <div class="infos-block">
+                            <div class="aditionals" ng-class ="togglesa ? '':'slide-in-up-infos'">  
+                                <div class="infos-container">
+                                    <div class="risk-info">
+                                        <div class="risk-low" ng-class="answerIndexes.risk == 1 ? 'show':'hide'">
+                                            <div class="action-points" ng-class="(question.apLow != 'NULL' && question.apLow != null)? 'show':'hide'">
+                                                <h5><b>Gold Standard Advice:</b></h5>
+                                                <p>
+<!--                                                    <b>Low risk: </b> -->
+                                                    {{question.apLow}}</p>
+                                            </div>
+                                            <div class="significant-improvement" ng-class="(question.siLow != 'NULL' && question.siLow != null)? 'show':'hide'">
+                                                <h5><b>Significant Improvements:</b></h5>
+                                                <p>{{question.siLow}}<p>
+                                            </div>
+
+                                            <div class="minimum-requierments" ng-class="(question.mrLow != 'NULL' && question.mrLow != null)? 'show':'hide'">
+                                                <h5><b>Minimum Requirements:</b></h5>
+                                                <p>{{question.mrLow}}<p>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="risk-medium" ng-class="answerIndexes.risk == 2 ? 'show':'hide'">
+                                            <div class="action-points" ng-class="(question.apMedium != 'NULL' && question.apMedium != null)? 'show':'hide'">
+                                                <h5><b>Gold Standard Advice:</b></h5>
+                                                <p>
+<!--                                                    <b>Medium risk: </b> -->
+                                                    {{question.apMedium}}</p>
+                                            </div>
+                                            <div class="significant-improvement" ng-class="(question.siMedium != 'NULL' && question.siMedium != null)? 'show':'hide'">
+                                                <h5><b>Significant Improvements:</b></h5>
+                                                <p>{{question.siMedium}}<p>
+                                            </div>
+                                            <div class="minimum-requierments" ng-class="(question.mrMedium != 'NULL' && question.mrMedium != null)? 'show':'hide'">
+                                                <h5><b>Minimum Requirements:</b></h5>
+                                                <p>{{question.mrMedium}}<p>
+                                            </div>
+                                            
+                                        </div>
+
+                                        <div class="risk-high" ng-class="answerIndexes.risk == 3 ? 'show':'hide'">
+                                            <div class="action-points" ng-class="(question.apHigh != 'NULL' && question.apHigh != null)? 'show':'hide'">
+                                                <h5><b>Gold Standard Advice:</b></h5>
+                                                <p>
+<!--                                                    <b>High risk: </b> -->
+                                                    {{question.apHigh}}</p>
+                                            </div>
+                                            <div class="significant-improvement" ng-class="(question.siHigh != 'NULL' && question.siHigh != null)? 'show':'hide'">
+                                                <h5><b>Significant Improvements:</b></h5>
+                                                <p>{{question.siHigh}}<p>
+                                            </div>
+                                            <div class="minimum-requierments" ng-class="(question.mrHigh != 'NULL' && question.mrHigh != null)? 'show':'hide'">
+                                                <h5><b>Minimum Requirements:</b></h5>
+                                                <p>{{question.mrHigh}}<p>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                
+                                
+                                </div>
+                                    
+                            </div>
+                            <div class="infos" ng-class ="toggles ? '':'slide-in-up-infos'">
+                                <div class="infos-container">
+                                    <div class="information">
+                                        <h3>Information:</h3>
+                                        <p> {{question.information}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- Info block -->
+                        <div class="transition" ng-class ="!toggles ? 'opacity-hide':'show'">
+                            <div class="option-block" ng-class="(question.qType != 2) ? 'hide':''" >
+
+                                <span data-ng-repeat="i in options[question.id]['order']"
+                                      class="squaredOne height-{{options[question.id]['options']}}" >
+                                           <input type="radio"
+                                                  class="field"
+                                                  value="{{i}}"
+                                                  id="q{{question.id}}-{{i}}"
+                                                  ng-model="answerFormData[question.id]['radio']"
+                                                  ng-change ="updateRadioData(answerFormData)">
+                                           <label
+                                                   class="{{options[question.id]['risk'][i]}}"
+                                                   for="q{{question.id}}-{{i}}"> {{question[i]}}</label>
+                                    </span>
+                                <!-- ENDS NG-REPAET Options -->
+                            </div> <!-- Radio -->
+                            <div class="option-block" ng-class="(question.qType != 1) ? 'hide':''" >
+                                <span ng-repeat="i in options[question.id]['order']"
+                                      class="squaredOne height-{{options[question.id]['options']}}" >
+                                       <input type="checkbox"
+                                              class="field"
+                                              id="{{question.id}}-mlt-{{i}}"
+                                              ng-model="multipleSelectionForm[question.id][i]"
+                                              ng-change = "processMultipleSelection (multipleSelectionForm)">
+                                       <label
+                                               class="{{multipleSelectionRisk[question.id]}}"
+                                               for="{{question.id}}-mlt-{{i}}">{{question[i]}}</label>
+                                   
+                                </span>
+                                
+                                 <span class="overlayblock cover-{{options[question.id]['options']}}" ng-class="(!nonSelected) ? 'hide':''"></span>
+                                <span class="overlayblockinv height-{{options[question.id]['options']}}" ng-class="(!varSelected) ? 'hide':''"></span>
+
+                                <!-- ENDS NG-REPAET Options -->
+                            </div> <!-- checkbox -->
+                        </div> <!-- Answers block -->
+                        <div class="oi-box" ng-class="(question.id == 1 || question.id == 16 || question.id == 17 || question.id == 18) ? '':'hide'">
+                            <div class="oi-conteiner" id="vresult-{{question.id}}" ng-class="(isAnswered[question.id] != true) ? '':'hide'">
+                                <div class="vacctinations" >
+                                    <label ng-class="(question.id == 16 || question.id == 17 || question.id == 18) ? '':'hide'">Number of vaccinated horses:</label>
+                                    <label ng-class="(question.id == 1) ? '':'hide'">Number of horses in the yard:</label>
+                                    <input id="vaccination" class="field" type="number" ng-model="vaccinationForm[question.id]['horses']">
+                                    <button class="btn survey" nav-direction="forward" ng-click="vaccination(vaccinationForm)"> SUBMIT </button>
+                                </div>
+                            
+                            </div>
+                        </div><!-- Input field overlay -->
+                    </div>
+                </ion-slide><!-- repeted questions list of slides -->
+                <ion-slide><div class="fullslide"> </div></ion-slide>
+                <!-- EMPTY SLIDE -->
+            </ion-slide-box>
+        </div>
+            <div class="surveymanager hide" id="surveymanager-{{id}}">
+                <!--<button class="btn submits" ng-click="slideTo(42)">Manage survey submitions</button>-->
+<!--                <button class="icon-btn submit save-pos" ng-click="save()"></button>-->
+            </div>
+            <div class = "footer-bar">
+                <div class="logo-bar">
+                    <span class="left"></span>
+                    <span class="right"></span>
+                </div>
+                <div class="fuel_gauge" id="fuel_gauge-{{id}}">
+                    <div class="meter">
+                        <div class="tip" id="fuelgaugeindicator-{{id}}" style = ""></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </ion-content>
+</ion-view>

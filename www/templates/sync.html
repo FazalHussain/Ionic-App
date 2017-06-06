@@ -1,0 +1,60 @@
+<ion-view view-title="SURVEYS MANAGER" cache-view="false">
+  <ion-content scroll="false" class="general">
+    <h1>SURVIES MANAGER</h1>
+    <div class="title chapter-0">
+      <h1>Assessments Manager</h1>
+    </div>
+    <div class="box">
+      <div class="list-selectors">
+        <button class="complete-selector button button-{{selector}}" on-touch = "selector = !selector">Complete assessments</button>
+        <button class="partial-selector button button-{{!selector}}" on-touch = "selector = !selector">Incomplete assessments</button>
+      </div>
+      <div class="container">
+        <div class="list-container">
+          <div class="complete-list" ng-class ="selector ? '':'slide-in-up-infos'">
+            <ion-list
+                    ng-controller="ListbtnCtrl"
+                    can-swipe="listCanSwipe">
+              <ion-item ng-repeat="item in completeItems" class="item-thumbnail-left item-light">
+                {{item.survey.created }} - {{item.yard.yname}}
+                <ion-option-button class="button-positive"  ng-click="sync(item)">
+                  SYNC
+                </ion-option-button>
+              </ion-item>
+            </ion-list>
+
+
+          </div>
+          <div class="partial-list" ng-class ="!selector ? '':'slide-in-up-infos'">
+            <ion-list
+                    ng-controller="ListbtnCtrl"
+                    can-swipe="listCanSwipe">
+              <ion-item ng-repeat="item in partialItems" class="item-thumbnail-left item-light">
+                {{item.survey.created }} - {{item.yard.yname}}
+                <ion-option-button class="button-assertive"
+                                   ng-click="delete(item)">
+                  DELETE
+                </ion-option-button>
+                <ion-option-button class="button-light"
+                                   ng-click="edit(item)">
+                  RESUME
+                </ion-option-button>
+
+              </ion-item>
+            </ion-list>
+
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <!--<div class = "footer-bar">-->
+      <!--<div class="logo-bar">-->
+        <!--<span class="left"></span>-->
+        <!--<span class="right"></span>-->
+      <!--</div>-->
+    <!--</div>-->
+  </ion-content>
+</ion-view>

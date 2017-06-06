@@ -1,0 +1,199 @@
+
+// Slide up from the bottom, used for modals
+// -------------------------------
+
+.slide-in-up {
+  @include translate3d(0, 100%, 0);
+}
+.slide-in-up.ng-enter,
+.slide-in-up > .ng-enter {
+  @include transition(all cubic-bezier(.1, .7, .1, 1) 400ms);
+}
+.slide-in-up.ng-enter-active,
+.slide-in-up > .ng-enter-active {
+  @include translate3d(0, 0, 0);
+}
+
+.slide-in-up.ng-leave,
+.slide-in-up > .ng-leave {
+  @include transition(all ease-in-out 250ms);
+}
+
+// Slide-up from bottom at 3/4 page position - used for slider infors
+
+.slide-in-up-infos {
+  height: 65% !important; 
+}
+
+
+//.slide-in-up-infos.ng-enter,
+//.slide-in-up-infos > .ng-enter {
+//  @include transition(all cubic-bezier(.1, .7, .1, 1) 4ms);
+//}
+//.slide-in-up-infos.ng-enter-active,
+//.slide-in-up-infos > .ng-enter-active {
+//  @include translate3d(0, 0, 0);
+//}
+//
+//.slide-in-up-infos.ng-leave,
+//.slide-in-up-infos > .ng-leave {
+//  @include transition(all ease-in-out 2ms);
+//}
+
+
+// Scale Out
+// Scale from hero (1 in this case) to zero
+// -------------------------------
+
+@-webkit-keyframes scaleOut {
+  from { -webkit-transform: scale(1); opacity: 1; }
+  to { -webkit-transform: scale(0.8); opacity: 0; }
+}
+@keyframes scaleOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.8); opacity: 0; }
+}
+
+
+// Super Scale In
+// Scale from super (1.x) to duper (1 in this case)
+// -------------------------------
+
+@-webkit-keyframes superScaleIn {
+  from { -webkit-transform: scale(1.2); opacity: 0; }
+  to { -webkit-transform: scale(1); opacity: 1 }
+}
+@keyframes superScaleIn {
+  from { transform: scale(1.2); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+// Scale Down on 70
+
+
+@-webkit-keyframes scaleDown70 {
+  0% {
+    -webkit-transform: scale(1);
+    top: 170px;
+    left: 400px;
+  }
+  33% {
+    -webkit-transform: scale(0.7);
+    top: 170px;
+    left: 400px;
+
+  }
+  66% {
+    -webkit-transform: scale(0.7);
+    top: 100px;
+    left: 400px;
+
+  }
+  100% {
+    -webkit-transform: scale(0.7);
+    top: 100px;
+    left: 200px;
+
+  }
+}
+@keyframes scaleDown70 {
+  0% {
+    -webkit-transform: scale(1);
+    top: 170px;
+    left: 400px;
+  }
+  33% {
+    -webkit-transform: scale(0.7);
+    top: 170px;
+    left: 400px;
+
+  }
+  66% {
+    -webkit-transform: scale(0.7);
+    top: 100px;
+    left: 400px;
+
+  }
+  100% {
+    -webkit-transform: scale(0.7);
+    top: 100px;
+    left: 200px;
+
+  }
+}
+
+
+// Fade Out
+// Scale from hero (1 in this case) to zero
+// -------------------------------
+
+@-webkit-keyframes fadeOut {
+  from { opacity: 1; }
+  to {  opacity: 0; }
+}
+@keyframes fadeOut {
+  from {  opacity: 1; }
+  to { opacity: 0; }
+}
+
+
+// Fade Id
+// Scale from hero (1 in this case) to zero
+// -------------------------------
+
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+  to {  opacity: 1; }
+}
+@keyframes fadeIn {
+  from {  opacity: 0; }
+  to { opacity: 1; }
+}
+
+.scaledown {
+  @include animation(scaleDown70);
+  @include animation-duration (2s);
+  @include animation-delay (1.5s);
+  @include animation-fill-mode(forwards);
+}
+
+.hide-visual {
+  @include animation(scaleOut);
+  @include animation-duration (800ms);
+  @include animation-delay (1s);
+  @include animation-fill-mode(forwards);
+}
+
+.show-visual {
+  @include animation(superScaleIn);
+  @include animation-duration (1s);
+
+  @include animation-fill-mode(forwards);
+}
+
+.dilay-5s {
+  @include animation-delay (5s);
+}
+
+.dilay-3s {
+  @include animation-delay (3s);
+}
+
+.dilay-500ms {
+  @include animation-delay (500ms);
+}
+
+.fade-out {
+  @include animation(fadeOut);
+  @include animation-duration (800ms);
+  @include animation-delay (500ms);
+  @include animation-fill-mode(forwards);
+}
+
+.fade-in {
+  @include animation(fadeIn);
+  @include animation-duration (800ms);
+  @include animation-delay (500ms);
+  @include animation-fill-mode(forwards);
+}
+

@@ -1,0 +1,68 @@
+<ion-modal-view >
+  <ion-content scroll="false">
+      <div  class="tops">
+          <div class="buttons">
+              <button class="button button-clear close show-btn" style="z-index: 1000" ng-click="closeSave()"></button>
+          </div>
+          <div class="chapter-area">
+              <div class="slide-header category-0">
+                  <h1><span class="icon"></span><span class="cat-info">Save assessment</span></h1>
+              </div>
+          </div>
+      </div>
+      <div class="modal-block" scroll="false">
+          <div class="container column-set">
+
+              <div class="left">
+
+                  <div class="error-block">
+                      <h4>Assessment risk per section</h4>
+                      <table>
+
+                             <tr ng-repeat="cat in category">
+                                 <td>{{cat.category}}</td>
+                                 <td>
+<!--                                     ({{cat.catlow}} to {{cat.catmax}})-->
+                                 </td>
+                                 <td style="text-align:center"> 
+<!--                                     {{answers['scores'][cat.id]}}-->
+                                 </td>
+                                 <td>{{answers['catrisks'][cat.id]}}</td>
+                             </tr>
+
+                      </table>
+                  </div>
+
+              </div>
+              <div class="right">
+                  <div class="buttons" ng-class="errorCounter === 0 ? 'show': 'hide'">
+                      <button class="btn survey" on-release="checkProgress()"> Check assessment</button>
+                      <button class="btn survey" on-release="savePartial()"> Save progress</button>
+                      <button class="btn survey" on-release="saveComplete()"> Submit assessment</button>
+                  </div>
+
+                  <div class="error-block" ng-class="errorCounter == 0 ? 'hide': 'show'">
+                      <p class="float-left">You have missed {{errorCounter}} answers. </p>
+                                <span class="resubmit">
+                                    <button class="btn survey" on-release="checkProgress()"> Check</button>
+                                    <button class="btn survey" on-release="savePartial()"> Save progress</button>
+                                    <button class="btn survey" on-release="saveComplete()"> Submit assessment</button></span>
+
+                      <ul class="error-list" >
+                          <li ng-repeat = "error in errorList" ng-click="getTo(error.categoryId)">
+                              {{error.message}}
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class = "footer-bar">
+              <div class="logo-bar">
+                  <span class="left"></span>
+                  <span class="right"></span>
+              </div>
+          </div>
+
+      </div>
+  </ion-content>
+</ion-modal-view>

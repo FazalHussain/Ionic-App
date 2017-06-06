@@ -1,0 +1,143 @@
+<ion-view view-title="DETAILS" class="light-bg" cache-view="false">
+    <ion-content scroll="false">
+        <div  class="tops">
+            <!--<button class="icon-btn summary info-summary" ng-click="goToPage('app.survey')"></button>-->
+            <div class="chapter-area">
+                <div class="slide-header category-0">
+                    <h1><span class="icon"></span><span class="cat-info">ASSESSMENT DETAILS</span></h1>
+                </div>
+            </div>
+
+        </div>
+        <div ng-bind-html="html"></div>
+
+        <form id="detailForm" validate>
+            <ion-slide-box show-pager="false" slide-interval = 0 active-slide="detailSlide">
+                <ion-slide><!-- SLIDE  01 - surveyor -->
+                    <div class="box">
+                        <div class="slide-title chapter-0">
+                            <h2>Veterinary Surgeon</h2>
+                            <div class="next-pos-dark">
+                <!--                <span>{{prevCategory}}</span>-->
+                                <button class="icon-btn next_dark" nav-direction="forward" ng-click="nextSlide()"></button>
+                            </div>
+                        </div>
+                        <ion-scroll direction="y">
+                            <div class="slide-container middle-set ">
+                                <span class="input-field">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="20%"><label>NAME:</label></td>
+                                            <td><input class="field" type="text" ng-model="surgeonFormData.name"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label>EMAIL:</label></td>
+                                            <td><input class="field" type="email" ng-model="surgeonFormData.user"></td>
+                                        </tr>
+                                    </table>
+
+
+                                </span>
+                                <div class="right">
+                                    <button class="btn survey" nav-direction="forward" ng-click="getsurgeon(surgeonFormData)"> SUBMIT </button>
+                                </div>
+                            </div>
+                        </ion-scroll>
+                        <div class="slide-footer">
+                            <p class="left">Practice name: <strong>{{vet.name}}</strong> </p>
+                            <p class="right">Practice code: <strong>{{vet.code}}</strong></p>
+                        </div>
+                    </div>
+                </ion-slide><!-- SLIDE  01 -->
+                <ion-slide><!-- SLIDE  01.1 - surveyor -->
+                    <div class="box">
+                        <div class="slide-title">
+                            <h2>Welcome</h2>
+                        <div class="prev-pos" ng-class="isAgreed ? 'show':'hide'">
+                            <button class="icon-btn prev_dark" nav-direction="back" ng-click="prevSlide()"></button>
+                        </div>
+                        <div class="next-pos-dark" ng-class="isAgreed ? 'show':'hide'">
+                            <button class="icon-btn next_dark" nav-direction="forward" ng-click="nextSlide()"></button>
+                        </div>
+                        
+                        </div>
+                        <div class="slide-container middle-set">
+                            <p><b>Welcome to KBHH Yard Master.</b> This app will allow us to perform a biosecurity risk assessment of your yard based on responses you provide to questions regarding the husbandry and management of the horses on your yard. There are a series of questions which are grouped into topics which cover the management of resident horses and new arrivals, vaccinations, worming, isolation facilities and infection control. Once completed, a report will be generated containing some of the recommendations to help protect your yard against disease. This will be emailed to you with a suggested time period for reassessment.</p>
+                            <p><a href="http://www.merck.com/about/how-we-operate/privacy/safe-harbor-privacy-policy.html">Safe Harbour Privacy Policy.</a> </p>
+                    <span class="squaredTwo" >
+<!--                                       <input class="field" type="radio" id="agree" value="true"  ng-model="surveyFormData.agree">-->
+                                       <button class="show-btn privacy" ng-click="showTerms()">Please accept the Privacy Policy and Terms of Use</button>
+                                </span>
+                        </div>
+                        <div class="slide-footer">
+                            <p class="left">Practice name: <strong>{{vet.name}}</strong> </p>
+                            <p class="right">Practice code: <strong>{{vet.code}}</strong></p>
+                        </div>
+                    </div>
+                </ion-slide><!-- SLIDE  01.1 -->
+                <ion-slide><!-- SLIDE 02 -->
+                    <ion-scroll direction="y">
+                        <div class="box">
+                            
+                            <div class="slide-title chapter-0">
+                                <h2>Yard details</h2>
+                                <div class="prev-pos">
+                                <button class="icon-btn prev_dark" nav-direction="back" ng-click="prevSlide()"></button>
+                <!--                <span>back</span>-->
+                            </div>
+                            </div>
+                            
+                                <div class="slide-container column-set">
+                                    <div class="left">
+                                        <label>Yard name:</label>
+                                        <input class="field" type="text" ng-model="surveyFormData.yname">
+                                        <label>Yard email:</label>
+                                        <input class="field" type="email" ng-model="surveyFormData.yrespondentemail">
+                                        <label>Yard Manager/Owner:</label>
+                                        <input class="field" type="text" ng-model="surveyFormData.yrespondentname">
+                                        <!--<label>Role:</label>-->
+                                        <!--<input class="field" type="text" ng-model="surveyFormData.yrespondentrole">-->
+
+                                    </div>
+                                    <div class="right">
+                                        <label>Address line 1:</label>
+                                        <input class="field" type="text" ng-model="surveyFormData.yaddress">
+                                        <label>County:</label>
+                                        <input class="field" type="text" ng-model="surveyFormData.ycounty">
+                                        <label>Postcode:</label>
+                                        <input class="field" type="text" ng-model="surveyFormData.ypostcode">
+        <!--
+                                        <div class="horses">
+                                            <label>Number of horses in the yard:</label>
+                                            <input id="animalcounter" class="field" type="number" ng-model="surveyFormData.horses">
+                                        </div>
+        -->
+                                        <div>
+                                            <button class="btn survey" nav-direction="forward" ng-click="update(surveyFormData)"> START </button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            
+                            <div class="slide-footer">
+                                <p class="left">Practice name: <strong>{{vet.name}}</strong> </p>
+                                <p class="right">Practice code: <strong>{{vet.code}}</strong></p>
+                            </div>
+                        </div>
+                        </ion-scroll>
+                </ion-slide>
+            </ion-slide-box>
+        </form>
+            <!--<div class="surveymanager">-->
+                <!--<button class="icon-btn submit save-pos" ng-click="save()"></button>-->
+            <!--</div>-->
+            <div class = "footer-bar">
+                <div class="logo-bar">
+                    <span class="left"></span>
+                    <span class="right"></span>
+                </div>
+            </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,61 @@
+<ion-side-menus enable-menu-with-back-views="true" drag-content="false">
+  <ion-side-menu-content drag-content="false">
+    <ion-nav-bar class="bar-dark">
+      <!--<ion-nav-back-button>-->
+      <!--</ion-nav-back-button>-->
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" drag-content="false">
+<!--
+    <ion-header-bar class="bar-dark">
+      <h1 class="title">Left</h1>
+    </ion-header-bar>
+-->
+    <ion-content class="dark-bg navigator">
+<!--        <h1>MENU</h1>-->
+        <div class="menu-icons">
+            <ion-list>
+                  <ion-item menu-close href="#/app/details" class="icon-item" ng-click="newAssesment()">
+                        <button class="icon-btn new"></button><span>New assessment</span>
+                  </ion-item>
+                    <ion-item menu-close href="#/app/sync" class="icon-item">
+                        <button class="icon-btn manage" ></button><span>Assessment Manager</span>
+                    </ion-item>
+                    <ion-item menu-close href="#" class="icon-item light" ng-click="save()">
+                        <button class="icon-btn submit"></button><span>Save assessment</span>
+                    </ion-item>
+              </ion-list>
+        </div>
+      <div class="menu-list">
+      <ion-list>
+<!--
+          <ion-item menu-close href="#/app/details" class="item-dark" ng-click="newAssesment()">
+            Create Assessment
+          </ion-item>
+        <ion-item menu-close href="#/app/sync" class="item-dark">
+          Manage Assessments
+        </ion-item>
+-->
+        <ion-item menu-close href="#/app/about" class="">
+          Professor Josh Slater
+        </ion-item>
+        <ion-item menu-close href="#/app/terms" class="">
+          Terms of use
+        </ion-item>
+
+      </ion-list>
+        </div>
+      <div class="menu-footer">
+          
+        <p>Powered by <br/>ICC an FCB Health Company</p>
+      </div>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
